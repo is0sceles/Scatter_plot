@@ -63,13 +63,6 @@ class Scatterplot extends Component {
       d3.max(this.data, d => d.duration),
     ]);
 
-      // Add the valueline path.
-    svg
-        .append('path')
-        .data([this.data])
-        .attr('class', 'line')
-        .attr('d', valueline);
-
       // Add the scatterplot
     svg
         .selectAll('dot')
@@ -96,7 +89,7 @@ class Scatterplot extends Component {
     return (
       <div className="App">
         {this.chart()}
-        <footer className="App-header">
+        <footer className="App-footer">
           <h6 className="App-title">powered by D3</h6>
         </footer>
       </div>
