@@ -41,14 +41,12 @@ class Scatterplot extends Component {
                 .append('g')
                 .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    // const regex = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/g;
-
     this.data
           .forEach((d, i) => {
             // d.date = new Date(Date.parse(d.start_time));
             d.date = parseTime(d.start_time); // format date and add as new property
             d.duration = +d.duration;
-            console.log(d, i); // delete me por favor
+            // console.log(d); // delete me por favor
           });
 
       // Scale the range of the data

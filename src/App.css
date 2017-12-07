@@ -7,13 +7,6 @@
   height: 80px;
 }
 
-.App-footer {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: rgb(50, 101, 177);
-}
-
 .App-title {
   font-size: 1.5em;
 }
@@ -27,17 +20,8 @@
   to { transform: rotate(360deg); }
 }
 
-
-body {
-  font: 10px sans-serif;
-}
-
-.axis line {
+/* .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
-}
-
-.dot {
-  stroke: #000;
-}
+} */
