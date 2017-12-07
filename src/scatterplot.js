@@ -21,7 +21,7 @@ class Scatterplot extends Component {
     const height = 500 - margin.top - margin.bottom;
 
     // parse the date / time
-    const parseTime = d3.timeParse('%d-%b-%y');
+    const parseTime = d3.timeParse('%Y-%m-%dT%H:%M:%SZ');
 
     // set the ranges
     const x = d3
@@ -35,7 +35,7 @@ class Scatterplot extends Component {
     const valueline = d3
                       .line()
                       .x(d => x(d.date))
-                      .y(d => y(d.close));
+                      .y(d => y(d.duration));
 
     // append the svg obgect to the body of the page appends a 'group' element to
     // 'svg' moves the 'group' element to the top left margin
@@ -47,20 +47,20 @@ class Scatterplot extends Component {
                 .append('g')
                 .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    console.log(this.data); // delete me por favor
+    // const regex = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/g;
 
-      // format the data
     this.data
-        .forEach((d) => {
-          d.date = parseTime(d.date);
-          d.close = +d.close;
-        });
+          .forEach((d) => {
+            d.date = parseTime(d.start_time);
+            d.duration = +d.duration;
+            console.log(d); // delete me por favor
+          });
 
       // Scale the range of the data
     x.domain(d3.extent(this.data, d => d.date));
     y.domain([
       0,
-      d3.max(this.data, d => d.close),
+      d3.max(this.data, d => d.duration),
     ]);
 
       // Add the valueline path.
@@ -78,7 +78,7 @@ class Scatterplot extends Component {
         .append('circle')
         .attr('r', 5)
         .attr('cx', d => x(d.date))
-        .attr('cy', d => y(d.close));
+        .attr('cy', d => y(d.duration));
 
       // Add the X Axis
     svg
