@@ -32,7 +32,6 @@ body {
   font: 10px sans-serif;
 }
 
-.axis path,
 .axis line {
   fill: none;
   stroke: #000;
@@ -41,4 +40,8 @@ body {
 
 .dot {
   stroke: #000;
+}
+
+.selected {
+  stroke: rgb(228, 198, 29);
 }

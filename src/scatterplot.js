@@ -53,7 +53,7 @@ class Scatterplot extends Component {
           .forEach((d) => {
             d.date = parseTime(d.start_time);
             d.duration = +d.duration;
-            console.log(d); // delete me por favor
+            // console.log(d); // delete me por favor
           });
 
       // Scale the range of the data
@@ -83,6 +83,18 @@ class Scatterplot extends Component {
     svg
         .append('g')
         .call(d3.axisLeft(y));
+
+     // onclick handlers
+    const circle = d3.selectAll('circle');
+
+    circle._groups[0].forEach(c => c.addEventListener('click', function () {
+      d3.select(this).style('fill', 'red'); // just to make sure
+      // if ((this).classed('selected')) {
+      //   (this).classed('selected', false);
+      // } else {
+      //   (this).classed('selected', true);
+      // }
+    }));
   }
 
   render() {
