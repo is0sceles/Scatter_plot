@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Scatterplot is generated using D3. To run from terminal:     
 
-yarn i    
+npm i    
 yarn start     
 
 
