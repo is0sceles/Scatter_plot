@@ -19,8 +19,6 @@ class Scatterplot extends Component {
     };
     const width = 960 - margin.left - margin.right;
     const height = 520 - margin.top - margin.bottom;
-    const legendRectSize = 18;
-    const legendSpacing = 4;
 
     // parse the date / time
     const parseTime = d3.timeParse('%Y-%m-%dT%H:%M:%SZ');
@@ -119,33 +117,33 @@ class Scatterplot extends Component {
         }
       }));
 
-    // // Add legend
-    // const color = d3.scaleOrdinal(d3.schemeCategory20b);
-    // console.log('color', color);
+    // Add legend
+    const legend = svg
+                    .append('g')
+                    .attr('class', 'legend')
+                    .attr('transform', `translate(${width - 100}, ${5})`)
+                    .selectAll('g')
+                    .data(['pass', 'fail', 'error'])
+                    .enter()
+                    .append('g');
 
-    // const legend = svg.selectAll('.legend')
-    //       .data(color.domain())
-    //       .enter()
-    //       .append('g')
-    //       .attr('class', 'legend')
-    //       .attr('transform', (d, i) => {
-    //         const lHeight = legendRectSize + legendSpacing;
-    //         const offset = lHeight * (color.domain().length / 2);
-    //         const horz = -2 * legendRectSize;
-    //         const vert = i * (lHeight - offset);
-    //         return `translate(${horz},${vert})`;
-    //       });
+    legend.append('circle')
+          .attr('cy', (d, i) => i * 13)
+          .attr('r', () => 5)
+          .attr('stroke', '#000')
+          .attr('fill', (d) => {
+            switch (d) {
+              case 'pass': return '#00ff00';
+              case 'fail': return '#ff0000';
+              case 'error' : return '#ffa500';
+              default: return '#000';
+            }
+          });
 
-    // legend.append('rect')
-    //       .attr('width', legendRectSize)
-    //       .attr('height', legendRectSize)
-    //       .style('fill', color)
-    //       .style('stroke', color);
-
-    // legend.append('text')
-    //       .attr('x', legendRectSize + legendSpacing)
-    //       .attr('y', legendRectSize - legendSpacing)
-    //       .text(d => d);
+    legend.append('text')
+          .attr('y', (d, i) => (i * 15) + 2)
+          .attr('x', () => 10)
+          .text(d => d);
   }
 
   render() {
