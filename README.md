@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+
+
+Scatterplot is generated using D3. To run from terminal:
+
+yarn i
+yarn start
+
+
+
+
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
@@ -2227,3 +2237,5 @@ In the future, we might start automatically compiling incompatible third-party m
 ## Something Missing?
 
 If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md)
+
+d3: https://bl.ocks.org/d3noob/6f082f0e3b820b6bf68b78f2f7786084
