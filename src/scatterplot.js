@@ -88,12 +88,12 @@ class Scatterplot extends Component {
     const circle = d3.selectAll('circle');
 
     circle._groups[0].forEach(c => c.addEventListener('click', function () {
-      d3.select(this).style('fill', 'red'); // just to make sure
-      // if ((this).classed('selected')) {
-      //   (this).classed('selected', false);
-      // } else {
-      //   (this).classed('selected', true);
-      // }
+      if (d3.select(this)._groups[0][0].style.stroke.length !== 0) {
+        d3.select(this)._groups[0][0].style.stroke = '';
+      } else {
+        d3.select(this)._groups[0][0].style.stroke = '#eee';
+        d3.select(this)._groups[0][0].style.strokeWidth = 4;
+      }
     }));
   }
 

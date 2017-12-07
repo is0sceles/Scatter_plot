@@ -41,7 +41,3 @@ body {
 .dot {
   stroke: #000;
 }
-
-.selected {
-  stroke: rgb(228, 198, 29);
-}
