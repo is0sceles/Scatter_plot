@@ -71,7 +71,14 @@ class Scatterplot extends Component {
         .append('circle')
         .attr('r', 5)
         .attr('cx', d => x(d.date))
-        .attr('cy', d => y(d.duration));
+        .attr('cy', d => y(d.duration))
+        .attr('fill', (d) => {
+          switch (d.status) {
+            case 'pass': return 'green';
+            case 'fail': return 'red';
+            case 'error': return 'orange';
+          }
+        });
 
       // Add the X Axis
     svg
@@ -87,14 +94,15 @@ class Scatterplot extends Component {
      // onclick handlers
     const circle = d3.selectAll('circle');
 
-    circle._groups[0].forEach(c => c.addEventListener('click', function () {
-      if (d3.select(this)._groups[0][0].style.stroke.length !== 0) {
-        d3.select(this)._groups[0][0].style.stroke = '';
-      } else {
-        d3.select(this)._groups[0][0].style.stroke = '#eee';
-        d3.select(this)._groups[0][0].style.strokeWidth = 4;
-      }
-    }));
+    circle._groups[0]
+      .forEach(c => c.addEventListener('click', function () {
+        if (d3.select(this)._groups[0][0].style.stroke.length !== 0) {
+          d3.select(this)._groups[0][0].style.stroke = '';
+        } else {
+          d3.select(this)._groups[0][0].style.stroke = '#eee';
+          d3.select(this)._groups[0][0].style.strokeWidth = 4;
+        }
+      }));
   }
 
   render() {
